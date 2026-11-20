@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block content %}
+<div class="card"><h1>Crop Recommendation — Agle Season Kya Lagayein?</h1><p>Based on last 26 weeks vs previous 26 weeks trend, minus volatility. This is a suggestion, not a guarantee.</p>
+<table><tr><th>Rank</th><th>Crop</th><th>Avg Price ₹</th><th>Trend %</th><th>Volatility %</th><th>Score</th></tr>
+{% for r in recs %}<tr><td>{{loop.index}}</td><td><b>{{r.crop}}</b></td><td>{{r.avg_price}}</td><td>{{r.trend_pct}}</td><td>{{r.volatility}}</td><td>{{r.score}}</td></tr>{% endfor %}</table>
+<p>Top pick: <b>{{recs[0].crop}}</b> (score {{recs[0].score}})</p></div>
+{% endblock %}

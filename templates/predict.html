@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block content %}
+<div class="card"><h1>Price Prediction / Bhav ki Bhavishyavani</h1>
+<form method="post"><label>Crop / Fasal</label><select name="crop">{% for c in crops %}<option {% if c==crop %}selected{% endif %}>{{c}}</option>{% endfor %}</select>
+<label>Mandi</label><select name="mandi">{% for m in mandis %}<option {% if m==mandi %}selected{% endif %}>{{m}}</option>{% endfor %}</select>
+<button class="btn">Predict</button></form></div>
+{% if result %}<div class="card"><h2>{{result.crop}} — {{result.mandi}}</h2>
+<p>Current price: <b>₹{{result.current}}/quintal</b></p>
+<table><tr><th>Horizon</th><th>Date</th><th>Predicted ₹</th><th>Range ₹</th></tr>
+<tr><td>7 days</td><td>{{result.p7.date}}</td><td>{{result.p7.price}}</td><td>{{result.p7.low}} – {{result.p7.high}}</td></tr>
+<tr><td>15 days</td><td>{{result.p15.date}}</td><td>{{result.p15.price}}</td><td>{{result.p15.low}} – {{result.p15.high}}</td></tr>
+<tr><td>30 days</td><td>{{result.p30.date}}</td><td>{{result.p30.price}}</td><td>{{result.p30.low}} – {{result.p30.high}}</td></tr></table>
+<p>30-day change: <b>{{result.change30}}%</b></p>
+<p class="{% if result.change30>5 %}good{% elif result.change30<-5 %}bad{% endif %}">{{result.advice}}<br>{{result.advice_hi}}</p></div>{% endif %}
+<div class="card"><h2>Price Trend — last 52 weeks</h2><canvas id="ch" height="120"></canvas></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>new Chart(document.getElementById('ch'),{type:'line',data:{labels:{{chart.dates|tojson}},datasets:[{label:'Modal Price ₹/quintal',data:{{chart.prices|tojson}},borderColor:'#2e7d32',fill:false}]},options:{responsive:true}});</script>
+{% endblock %}

@@ -1,0 +1,5 @@
+# NETLIFY HOSTS ONLY THE STATIC FRONTEND in frontend-static/
+# It CANNOT run Flask / Python / ML. The full app backend must be on Render or Google Cloud Run (free tier).
+# After deploying the backend, set BACKEND_URL in frontend-static/app.js to your Render/Cloud Run URL.
+[build]
+  publish = "frontend-static"

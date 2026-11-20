@@ -1,0 +1,16 @@
+Flask==3.0.3
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.5.1
+xgboost==2.1.1
+lightgbm==4.5.0
+matplotlib==3.9.2
+openpyxl==3.1.5
+python-docx==1.1.2
+python-pptx==1.0.2
+reportlab==4.2.2
+requests==2.32.3
+joblib==1.4.2
+shap==0.46.0
+gunicorn==22.0.0
+Werkzeug==3.0.4

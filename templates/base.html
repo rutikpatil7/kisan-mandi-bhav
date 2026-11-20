@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kisan Mandi Bhav — Crop Price Prediction</title><link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></head>
+<body><header><div class="logo">🌾 Kisan Mandi Bhav</div><nav>
+<a href="/">Home</a><a href="/predict">Predict / भविष्यवाणी</a><a href="/mandi">Best Mandi</a><a href="/profit">Profit Calculator</a>
+<a href="/msp">MSP</a><a href="/recommend">Crop Advice</a><a href="/weather">Weather</a><a href="/map">Map</a><a href="/alerts">Alerts</a>
+{% if user %}<a href="/admin">Admin</a><a href="/logout">Logout ({{user['name']}})</a>{% else %}<a href="/login">Login</a><a href="/register">Register</a>{% endif %}
+</nav></header><div class="container">
+{% with m=get_flashed_messages() %}{% if m %}{% for x in m %}<div class="flash">{{x}}</div>{% endfor %}{% endif %}{% endwith %}
+{% block content %}{% endblock %}</div>
+<footer>Kisan Mandi Bhav — Free, open-source project. Data: realistic synthetic data modelled on Agmarknet/eNAM patterns, NOT live Agmarknet data. | 100% free stack, no paid API.</footer></body></html>

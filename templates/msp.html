@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}
+<div class="card"><h1>MSP Comparison — Market Price vs MSP</h1><table><tr><th>Crop</th><th>Avg Market ₹</th><th>MSP ₹</th><th>Difference ₹</th><th>Status</th></tr>
+{% for r in rows %}<tr><td>{{r.crop}}</td><td>{{r.avg_price}}</td><td>{{r.msp if r.msp else '— (no MSP)'}}</td><td>{{r.diff if r.diff is not none else '—'}}</td><td>{% if r.above is none %}No MSP{% elif r.above %}<span class="good">Above MSP ✓</span>{% else %}<span class="bad">Below MSP — sell carefully</span>{% endif %}</td></tr>{% endfor %}</table></div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block content %}
+<div class="card"><h1>Best Mandi Finder</h1><form method="post"><label>Crop</label><select name="crop">{% for c in crops %}<option {% if c==crop %}selected{% endif %}>{{c}}</option>{% endfor %}</select>
+<label>Quintals</label><input type="number" step="0.5" name="quintals" value="{{quintals}}">
+<label>Transport cost ₹/quintal</label><input type="number" name="transport" value="{{transport}}"><button class="btn">Compare Mandis</button></form></div>
+<div class="card"><table><tr><th>#</th><th>Mandi</th><th>Current ₹</th><th>Predicted 15d ₹</th><th>Net ₹/quintal</th><th>Total Profit ₹</th></tr>
+{% for r in rows %}<tr><td>{{loop.index}}</td><td><b>{{r.mandi}}</b></td><td>{{r.current}}</td><td>{{r.predicted_15d}}</td><td>{{r.net_per_quintal}}</td><td>{{r.total_profit}}</td></tr>{% endfor %}</table>
+<p>Best mandi: <b>{{rows[0].mandi}}</b> — total profit ₹{{rows[0].total_profit}} for {{quintals}} quintals.</p></div>
+{% endblock %}

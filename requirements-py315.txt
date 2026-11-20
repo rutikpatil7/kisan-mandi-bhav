@@ -1,0 +1,22 @@
+# Crop Price Prediction — for Python 3.15 (Windows)
+# Use this file INSTEAD of requirements.txt on Python 3.13+
+# Old requirements.txt pins pandas==2.2.2 which has no wheel for Python 3.15
+# and fails with "metadata-generation-failed".
+# These have NO version pins, so pip picks the latest wheel for your Python.
+# shap and gunicorn are NOT needed to run the app (python run.py).
+# shap is only for train_models.py and it falls back to permutation importance if missing.
+# gunicorn is only for Render/Linux hosting, it does not install on Windows.
+Flask
+pandas
+numpy
+scikit-learn
+xgboost
+lightgbm
+matplotlib
+openpyxl
+python-docx
+python-pptx
+reportlab
+requests
+joblib
+Werkzeug

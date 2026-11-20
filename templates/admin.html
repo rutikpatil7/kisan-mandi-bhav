@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block content %}
+<div class="card"><h1>Admin Dashboard</h1><p>Best model: <b>{{metrics.best_model}}</b> | R² {{metrics.metrics[metrics.best_model].R2}} | RMSE ₹{{metrics.metrics[metrics.best_model].RMSE}}</p></div>
+<div class="kpis"><div class="kpi"><b>{{kpi.farmers}}</b><br>Farmers</div><div class="kpi"><b>{{kpi.predictions}}</b><br>Predictions</div><div class="kpi"><b>{{kpi.alerts}}</b><br>Alerts</div><div class="kpi"><b>{{kpi.prices}}</b><br>Price rows</div></div>
+<div class="card"><h2>Add Price Row</h2><form method="post"><input type="hidden" name="action" value="add_price">
+<input name="date" type="date" value="2025-10-27"><select name="crop">{% for c in crops %}<option>{{c}}</option>{% endfor %}</select>
+<select name="mandi">{% for m in mandis %}<option>{{m}}</option>{% endfor %}</select>
+<input name="state" placeholder="State"><input name="min_price" placeholder="Min ₹" type="number"><input name="max_price" placeholder="Max ₹" type="number"><input name="modal_price" placeholder="Modal ₹" type="number" required>
+<button class="btn">Add</button></form></div>
+<div class="card"><h2>Farmers</h2><table><tr><th>Name</th><th>Email</th><th>State</th></tr>{% for f in farmers %}<tr><td>{{f.name}}</td><td>{{f.email}}</td><td>{{f.state}}</td></tr>{% endfor %}</table></div>
+<div class="card"><h2>Latest Prices (20)</h2><table><tr><th>Date</th><th>Crop</th><th>Mandi</th><th>Modal ₹</th><th>Action</th></tr>
+{% for p in prices %}<tr><td>{{p.date}}</td><td>{{p.crop}}</td><td>{{p.mandi}}</td><td>{{p.modal_price}}</td><td><form method="post" style="display:inline"><input type="hidden" name="action" value="delete_price"><input type="hidden" name="price_id" value="{{p.id}}"><button>Delete</button></form></td></tr>{% endfor %}</table></div>
+<div class="card"><h2>Recent Predictions</h2><table><tr><th>Crop</th><th>Mandi</th><th>Target</th><th>Predicted ₹</th></tr>{% for p in preds %}<tr><td>{{p.crop}}</td><td>{{p.mandi}}</td><td>{{p.target_date}}</td><td>{{p.predicted_price}}</td></tr>{% endfor %}</table></div>
+{% endblock %}

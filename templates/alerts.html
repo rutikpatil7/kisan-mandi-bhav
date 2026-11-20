@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block content %}
+<div class="card"><h1>Price Alerts — FREE only</h1><p>No Twilio, no paid SMS/call. Alerts are saved to <code>alerts/outbox/</code> as files (demo outbox), and can be sent free via Gmail SMTP or Telegram Bot if you set env vars — no credentials in code.</p>
+<form method="post"><label>Crop</label><select name="crop">{% for c in crops %}<option>{{c}}</option>{% endfor %}</select>
+<label>Mandi</label><select name="mandi">{% for m in mandis %}<option>{{m}}</option>{% endfor %}</select>
+<label>Target price ₹/quintal</label><input type="number" name="target_price" value="2500">
+<label>Channel</label><select name="channel"><option value="email">Email (Gmail SMTP, free)</option><option value="telegram">Telegram Bot (free)</option><option value="outbox">Demo outbox file only</option></select>
+<button class="btn">Save Alert</button></form></div>
+{% endblock %}

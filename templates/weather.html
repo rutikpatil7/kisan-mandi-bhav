@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}
+<div class="card"><h1>Weather — Mausam (Free Open-Meteo, no key)</h1>
+<form><label>Mandi</label><select name="mandi" onchange="this.form.submit()">{% for m in mandis %}<option {% if m==mandi %}selected{% endif %}>{{m}}</option>{% endfor %}</select></form>
+<p>Source: {{w.source}}</p>{% if w.days %}<table><tr><th>Date</th><th>Rain mm</th><th>Max Temp °C</th></tr>
+{% for i in range(w.days|length) %}<tr><td>{{w.days[i]}}</td><td>{{w.rain_mm[i]}}</td><td>{{w.temp_max[i]}}</td></tr>{% endfor %}</table>
+{% else %}<p>Weather API offline — app uses dataset rainfall as fallback. No paid API needed.</p>{% endif %}</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block content %}
+<div class="card"><h1>🌾 Kisan Mandi Bhav — Crop Price Prediction</h1>
+<p><b>Problem:</b> Kisan ko pata nahi hota kal fasal ka kya bhav milega. Ye app 7 / 15 / 30 din ka bhav batata hai, best mandi dhoondhta hai, aur bechna hai ya rukna hai — ye salah deta hai.</p>
+<p><b>Problem (English):</b> Farmers don't know future mandi prices. This app predicts 7/15/30-day prices, finds the best mandi, and advises Sell Now vs Wait.</p>
+<p>Model: <b>{{metrics.best_model}}</b> | Test R² {{metrics.metrics[metrics.best_model].R2}} | RMSE ₹{{metrics.metrics[metrics.best_model].RMSE}}/quintal | MAPE {{metrics.metrics[metrics.best_model].MAPE}}% (test set, time-based split)</p>
+<a class="btn" href="/predict">Predict Price →</a> <a class="btn" href="/mandi">Best Mandi Finder →</a></div>
+<div class="kpis"><div class="kpi"><b>{{kpi.crops}}</b><br>Crops</div><div class="kpi"><b>{{kpi.mandis}}</b><br>Mandis</div><div class="kpi"><b>{{kpi.rows}}</b><br>Price records</div><div class="kpi"><b>{{kpi.predictions}}</b><br>Predictions made</div><div class="kpi"><b>{{kpi.farmers}}</b><br>Farmers</div></div>
+<div class="card"><h2>Latest Prices (latest week in data)</h2><table><tr><th>Crop</th><th>Mandi</th><th>Modal Price ₹/quintal</th><th>Date</th></tr>
+{% for r in latest %}<tr><td>{{r.crop}}</td><td>{{r.mandi}}</td><td>{{r.modal_price}}</td><td>{{r.date}}</td></tr>{% endfor %}</table></div>
+<div class="card"><h2>Free hosting note — Netlify samajh lo</h2><p><b>Netlify sirf static frontend host karta hai.</b> Ye Flask + ML app Netlify par nahi chalega. Frontend Netlify par, backend free Render / Google Cloud Run par — README me poora guide hai.</p></div>
+{% endblock %}

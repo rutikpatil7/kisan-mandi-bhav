@@ -1,0 +1,14 @@
+*{box-sizing:border-box}body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#f4f7f2;color:#1c2b1a}
+header{background:#1b5e20;color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+header a{color:#fff;text-decoration:none;margin:0 8px}header a:hover{text-decoration:underline}
+.logo{font-size:22px;font-weight:700}.container{max-width:1080px;margin:auto;padding:20px}
+.card{background:#fff;border-radius:12px;padding:20px;margin:14px 0;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:#e8f5e9;border-radius:10px;padding:16px;text-align:center}.kpi b{font-size:26px;color:#1b5e20}
+.btn{background:#2e7d32;color:#fff;border:0;padding:10px 18px;border-radius:8px;cursor:pointer;font-size:15px}
+.btn:hover{background:#1b5e20}input,select{padding:9px;border:1px solid #bbb;border-radius:8px;width:100%;margin:6px 0}
+label{font-weight:600}table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:left}
+.flash{background:#fff3cd;padding:10px;border-radius:8px;margin:10px 0}
+.good{color:#1b5e20;font-weight:700}.bad{color:#b71c1c;font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid{grid-template-columns:1fr}}
+footer{text-align:center;color:#666;padding:20px;font-size:13px}
